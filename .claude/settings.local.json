@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Read(/C:\\workspace\\projects\\poweredge-master\\src\\app\\data/**)",
+      "Read(/C:\\workspace\\projects\\poweredge-master\\src\\app\\news/**)",
+      "Bash(where magick)",
+      "Bash(where:*)",
+      "Bash(node:*)",
+      "Bash(npm run lint)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
