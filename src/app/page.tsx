@@ -73,8 +73,8 @@ export default function HomePage() {
   return (
     <>
       <PageTitle>
-        <p>Welcome to Power<Lightning />Edge</p>
-        <p>AC<Lightning />DC Tribute</p>
+        <p className="text-bold ">CHILI MONKS</p>
+        <p>Red Hot Chili Peppers Tribute</p>
       </PageTitle>
 
       <PageContent className="text-white">

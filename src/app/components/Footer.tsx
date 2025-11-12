@@ -4,7 +4,7 @@ import Lightning from './Lightning'
 
 export default function Footer() {
   return (
-    <footer className="bg-black/95 border-t border-white text-white pt-2 mt-4">
+    <footer className="bg-red-500/95 border-t border-white text-white pt-2 mt-4">
       <div className="max-w-6xl mx-auto px-4">
         
         {/* Main Footer Content */}
