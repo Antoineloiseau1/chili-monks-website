@@ -10,10 +10,11 @@ export default function NavBar() {
      <div className='text-2xl xl:text-3xl'>
       <ul className='flex gap-10 hidden lg:flex mobile-landscape-nav-left'>
         <Link href="#">
-          <li className='navbar-item extrude-text'>SHOWS</li>
+          <li className='navbar-item extrude-left-text'>SHOWS</li>
         </Link>
+        <span className='text-[#FF1493] mt-2'>|</span>
         <Link href="#">
-          <li className='navbar-item extrude-text'>MEDIAS</li>
+          <li className='navbar-item extrude-left-text'>MEDIAS</li>
         </Link>
       </ul>
      </div>
@@ -32,10 +33,11 @@ export default function NavBar() {
      <div className='text-2xl xl:text-3xl'>
       <ul className='flex hidden space-x-10 lg:flex mobile-landscape-nav-right'>
         <Link href="#">
-          <li className='navbar-item extrude-text'>ABOUT</li>
+          <li className='navbar-item extrude-right-text'>ABOUT</li>
         </Link>
+        <span className='text-[#FF1493] mt-2'>|</span>
         <Link href="#">
-          <li className='navbar-item extrude-text'>CONTACT</li>
+          <li className='navbar-item extrude-right-text -ml-1'>CONTACT</li>
         </Link>
       </ul>
      </div>

@@ -47,84 +47,77 @@
 }
 
 .navbar-item {
-  color: white;
+  color: #ffe26d;
+      -webkit-text-stroke: 1px #FF1493;
   font-size: 35px;
   font-weight: bold;
   position: relative;
   transition: 0.4s;
 }
-.extrude-text {
+
+.extrude-right-text {
     position: relative;
     display: inline-block;
     /* Added to improve font rendering quality */
     transform: translateZ(0); 
     -webkit-font-smoothing: antialiased; 
     
-    -webkit-text-stroke: 1px red;
-    text-shadow: 
-        /* Extrusion layers (Up to 10px depth) with subtle blur for anti-aliasing */
-        1px 1px 0 red,
-        2px 2px 0 red,
-        3px 3px 0 red,
-        4px 4px 0 red,
-        5px 5px 0 red,
-        6px 6px 0 red,
 
-        1.5px 1.5px 0 red,
-        2.5px 2.5px 0 red,
-        3.5px 3.5px 0 red,
-        4.5px 4.5px 0 red,
-        5.5px 5.5px 0 red,
-        6.5px 6.5px 0 red,
+    text-shadow: 
+        1px 1px 0 #FF1493,
+        2px 2px 0 #FF1493,
+        3px 3px 0 #FF1493,
+        4px 4px 0 #FF1493,
+
+
+        1px 1.5px 0 #FF1493,
+        2px 2.5px 0 #FF1493,
+        3px 3.5px 0 #FF1493,
+        4px 4.5px 0 #FF1493,
+
         
-        /* Final deep layer with more blur for a subtle glow/depth */
-        12px 12px 15px red;
+
+        6px 6px 6px #FF1493;
+        transition: text-shadow 0.4s;
+}
+.extrude-left-text {
+    position: relative;
+    display: inline-block;
+    transform: translateZ(0); 
+    -webkit-font-smoothing: antialiased; 
+    
+    text-shadow:
+        -1px 1px 0 #FF1493,
+        -2px 2px 0 #FF1493,
+        -3px 3px 0 #FF1493,
+        -4px 4px 0 #FF1493,
+
+
+        -1px 1.5px 0 #FF1493,
+        -2px 2.5px 0 #FF1493,
+        -3px 3.5px 0 #FF1493,
+        -4px 4.5px 0 #FF1493,
+
+        
+        -6px 6px 6px #FF1493;
         transition: text-shadow 0.4s;
 }
 
-.extrude-text:hover {
-    position: relative;
-    display: inline-block;
-    /* Added to maintain smooth rendering during transition */
-    transform: translateZ(0); 
-    
-    text-shadow: 
-        /* Extrusion layers (Up to 10px depth) with subtle blur for anti-aliasing */
-        1px 1px 0 white,
-        2px 2px 0 white,
-        3px 3px 0 white,
-        4px 4px 0 white,
-        5px 5px 0 white,
-        6px 6px 0 white,
-        1.5px 1.5px 0 white,
-        2.5px 2.5px 0 white,
-        3.5px 3.5px 0 white,
-        4.5px 4.5px 0 white,
-        5.5px 5.5px 0 white,
-        6.5px 6.5px 0 white,
-        /* Deep drop shadow for emphasis on hover */
-        12px 12px 15px red;
-        
-    transition: 0.4s;
-}
 
-.extrude-text:active {
+.extrude-left-text:active, .extrude-right-text:active {
     transform: translate(4px, 4px) scale(0.98);
     text-shadow: 
-        1px 1px 0 white,
-        2px 2px 0 white,
-        3px 3px 0 white,
-        1.5px 1.5px 0 white,
-        2.5px 2.5px 0 white,
-        2px 2px 8px red;
+        1px 1px 0 #FF1493,
+        2px 2px 0 #FF1493,
+        3px 3px 0 #FF1493,
+        1.5px 1.5px 0 #FF1493,
+        2.5px 2.5px 0 #FF1493;
+
     transition: 0.2s;
 }
 
 .navbar-item:hover {
-  color: red;
-
-  position: relative;
-  display: inline-block;
+  color: #faecb5;
 
 }
 
@@ -143,18 +136,6 @@
     font-size: 1rem !important;
   }
 } */
-
-.navbar-logo img:active {
-    transform: translate(4px, 4px) scale(0.98);
-    text-shadow: 
-        1px 1px 0 white,
-        2px 2px 0 white,
-        3px 3px 0 white,
-        1.5px 1.5px 0 white,
-        2.5px 2.5px 0 white,
-        2px 2px 8px red;
-    transition: 0.05s;
-}
 
 /* Compact header for medium-large screens (900px-1439px) */
 @media (min-width: 900px) and (max-width: 1439px) and (max-height:500px) {
