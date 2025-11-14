@@ -25,7 +25,7 @@ export default function BurgerMenu() {
 
   return(
     <>
-  <button type="button" onClick={handleMenuOpen} className='cursor-pointer m-5 hover:bg-red-500 hover:text-white lg:hidden border border-2 rounded-md top-0 right-0 absolute border-red-500 text-red-500 z-50'>
+  <button type="button" onClick={handleMenuOpen} className='cursor-pointer m-5 hover:bg-[#344d97] hover:text-white lg:hidden border border-2 rounded-md top-0 right-0 absolute border-[#344d97] text-[#344d97] z-50'>
     {
       menuOpen ? (
         <FaTimes className="m-2" size={20}/>
@@ -35,21 +35,21 @@ export default function BurgerMenu() {
     }
   </button>
   <div className={
-    menuOpen ? "fixed flex flex-col top-0 lg:hidden transition-all duration-150 w-full h-full bg-white/90 ease-in z-40" : "fixed top-0 left-[-100%] z-40"
+    menuOpen ? "fixed flex flex-col top-0 lg:hidden transition-all duration-150 w-full h-full backdrop-blur-md ease-in z-40" : "fixed top-0 left-[-100%] z-40"
   }>
-    <div className="flex flex-col text-red-500 text-center text-2xl w-full h-full relative">
+    <div className="flex flex-col text-center text-2xl w-full h-full relative">
       {/* Top menu items - spaced between themselves */}
       <div className="flex flex-col justify-evenly items-center h-2/5 pt-8">
         <Link href="#" onClick={handleLinkClick}>
-          <div className='navbar-item extrude-text sm:text-4xl'>SHOWS</div>
+          <div className='navbar-item extrude-right-text sm:text-4xl'>SHOWS</div>
         </Link>
         <Link href="#" onClick={handleLinkClick}>
-          <div className='navbar-item  extrude-text sm:text-4xl'>MEDIAS</div>
+          <div className='navbar-item  extrude-right-text sm:text-4xl'>MEDIAS</div>
         </Link>
       </div>
 
       {/* Center logo - absolutely positioned in the middle */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-6">
         <div className="navbar-logo">
           <Link href="#" onClick={handleLinkClick}>
             <Image
@@ -58,7 +58,7 @@ export default function BurgerMenu() {
               height="75"
               alt="chili-monks-logo"
               unoptimized
-              className="h-auto w-auto max-w-[175px]"
+              className="h-auto w-auto max-w-[220px]"
             />
           </Link>
         </div>
@@ -67,10 +67,10 @@ export default function BurgerMenu() {
       {/* Bottom menu items - spaced between themselves */}
       <div className="flex flex-col justify-evenly items-center h-3/6 pb-8 absolute bottom-0 w-full">
         <Link href="#" onClick={handleLinkClick}>
-          <div className='navbar-item extrude-text sm:text-4xl'>ABOUT</div>
+          <div className='navbar-item extrude-right-text sm:text-4xl'>ABOUT</div>
         </Link>
         <Link href="#" onClick={handleLinkClick}>
-          <div className='navbar-item  extrude-text sm:text-4xl'>CONTACT</div>
+          <div className='navbar-item  extrude-right-text sm:text-4xl'>CONTACT</div>
         </Link>
       </div>
     </div>

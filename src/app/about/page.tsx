@@ -55,7 +55,7 @@ export default function AboutPage() {
     <>
       <PageTitle >About us</PageTitle>
       
-      <PageContent className="text-white font-stencil mt-6">
+      <PageContent className="text-white font-avant-garde mt-6">
         <div className="max-w-sm sm:max-w-lg md:max-w-2xl xl:max-w-4xl 2xl:max-w-7xl mx-auto px-4">
 
           {/* Band Story */}

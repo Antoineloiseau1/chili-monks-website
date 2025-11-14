@@ -135,7 +135,7 @@ export default function BlogPage() {
                       />
                     </div>
                     
-                    <h2 className="text-xl sm:text-2xl  font-stencil text-white leading-tight group-hover:text-red-400 transition-colors duration-300">
+                    <h2 className="text-xl sm:text-2xl  font-avant-garde text-white leading-tight group-hover:text-red-400 transition-colors duration-300">
                       {isEnglish ? newsItem.en.title : newsItem.fr.title}
                     </h2>
                   </div>
@@ -217,7 +217,7 @@ export default function BlogPage() {
 
           {/* Call to Action Section */}
           <div className="bg-black/70 backdrop-blur-lg border border-red-500/30 rounded-2xl sm:rounded-3xl p-4 text-center mb-8">
-            <h3 className="text-2xl font-stencil text-whitemb-2  ">
+            <h3 className="text-2xl font-avant-garde text-whitemb-2  ">
               Stay in the Loop
             </h3>
             <p className="text-gray-200 font-body text-md mx-auto1 sm:mb-2 md:mb-4">

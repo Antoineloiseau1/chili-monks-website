@@ -85,7 +85,7 @@ export default function HomePage() {
   //           <div className="">
   //             <div className="flex items-center justify-center mb-6">
   //               <div className="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent flex-1"></div>
-  //               <h2 className="text-2xl sm:text-3xl md:text-4xl text-red-500 mx-6 sm:mx-8 md:mx-10 font-stencil">
+  //               <h2 className="text-2xl sm:text-3xl md:text-4xl text-red-500 mx-6 sm:mx-8 md:mx-10 font-avant-garde">
   //                 &#127928; UPCOMING SHOWS <span>&#127928;</span>
   //               </h2>
   //               <div className="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent flex-1"></div>
@@ -117,7 +117,7 @@ export default function HomePage() {
   //         <div className="mb-8">
   //           <div className="flex items-center justify-center">
   //             <div className="h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent flex-1"></div>
-  //             <h2 className="text-2xl sm:text-3xl md:text-4xl text-yellow-500 mx-6 sm:mx-8 md:mx-10 font-stencil">
+  //             <h2 className="text-2xl sm:text-3xl md:text-4xl text-yellow-500 mx-6 sm:mx-8 md:mx-10 font-avant-garde">
   //               📰 LATEST NEWS 📰
   //             </h2>
   //             <div className="h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent flex-1"></div>
@@ -184,7 +184,7 @@ export default function HomePage() {
   //                     />
   //                   </div>
 
-  //                   <h3 className="text-xl sm:text-2xl font-stencil text-white leading-tight group-hover:text-yellow-400 transition-colors duration-300 mb-4">
+  //                   <h3 className="text-xl sm:text-2xl font-avant-garde text-white leading-tight group-hover:text-yellow-400 transition-colors duration-300 mb-4">
   //                     {isEnglish ? newsItem.en.title : newsItem.fr.title}
   //                   </h3>
 
@@ -259,7 +259,7 @@ export default function HomePage() {
   //         {/* Call to Action Section */}
   //         <div className="max-w-sm 2xl:max-w-5xl sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl mx-auto px-4 mb-8 sm:mb-10 md:mb-12">
   //           <div className="bg-black/70 backdrop-blur-lg border border-red-500/30 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 text-center">
-  //             <h3 className="text-2xl sm:text-3xl font-stencil text-white mb-2 sm:mb-4">
+  //             <h3 className="text-2xl sm:text-3xl font-avant-garde text-white mb-2 sm:mb-4">
   //               Rock With Us!
   //             </h3>
   //             <p className="text-gray-200 font-body text-sm mb-4 sm:mb-6 max-w-2xl mx-auto">

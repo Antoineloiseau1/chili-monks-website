@@ -47,8 +47,8 @@
 }
 
 .navbar-item {
-  color: #ffe26d;
-      -webkit-text-stroke: 1px #FF1493;
+  color: #faeb83;
+      -webkit-text-stroke: 1px #344d97;
   font-size: 35px;
   font-weight: bold;
   position: relative;
@@ -64,22 +64,22 @@
     
 
     text-shadow: 
-        1px 1px 0 #FF1493,
-        2px 2px 0 #FF1493,
-        3px 3px 0 #FF1493,
-        4px 4px 0 #FF1493,
+        1px 1px 0 #344d97,
+        2px 2px 0 #344d97,
+        3px 3px 0 #344d97,
+        4px 4px 0 #344d97,
 
 
-        1px 1.5px 0 #FF1493,
-        2px 2.5px 0 #FF1493,
-        3px 3.5px 0 #FF1493,
-        4px 4.5px 0 #FF1493,
+        1.5px 1.5px 0 #344d97,
+        2.5px 2.5px 0 #344d97,
+        3.5px 3.5px 0 #344d97,
+        4.5px 4.5px 0 #344d97,
+        5px 5px 5px #344d97;
 
-        
-
-        6px 6px 6px #FF1493;
-        transition: text-shadow 0.4s;
+        transition: text-shadow 0.2s;
 }
+
+
 .extrude-left-text {
     position: relative;
     display: inline-block;
@@ -87,31 +87,43 @@
     -webkit-font-smoothing: antialiased; 
     
     text-shadow:
-        -1px 1px 0 #FF1493,
-        -2px 2px 0 #FF1493,
-        -3px 3px 0 #FF1493,
-        -4px 4px 0 #FF1493,
+        -1px 1px 0 #344d97,
+        -2px 2px 0 #344d97,
+        -3px 3px 0 #344d97,
+        -4px 4px 0 #344d97,
 
 
-        -1px 1.5px 0 #FF1493,
-        -2px 2.5px 0 #FF1493,
-        -3px 3.5px 0 #FF1493,
-        -4px 4.5px 0 #FF1493,
+        -1.5px 1.5px 0 #344d97,
+        -2.5px 2.5px 0 #344d97,
+        -3.5px 3.5px 0 #344d97,
+        -4.5px 4.5px 0 #344d97,
 
-        
-        -6px 6px 6px #FF1493;
-        transition: text-shadow 0.4s;
+        -5px 5px 5px #344d97;
+
+        transition: text-shadow 0.2s;
 }
 
 
-.extrude-left-text:active, .extrude-right-text:active {
+.extrude-left-text:active {
     transform: translate(4px, 4px) scale(0.98);
     text-shadow: 
-        1px 1px 0 #FF1493,
-        2px 2px 0 #FF1493,
-        3px 3px 0 #FF1493,
-        1.5px 1.5px 0 #FF1493,
-        2.5px 2.5px 0 #FF1493;
+        -1px 1px 0 #344d97,
+        -2px 2px 0 #344d97,
+        -3px 3px 0 #344d97,
+        -1.5px 1.5px 0 #344d97,
+        -2.5px 2.5px 0 #344d97;
+
+    transition: 0.1s;
+}
+
+.extrude-right-text:active {
+    transform: translate(4px, 4px) scale(0.98);
+    text-shadow: 
+        1px 1px 0 #344d97,
+        2px 2px 0 #344d97,
+        3px 3px 0 #344d97,
+        1.5px 1.5px 0 #344d97,
+        2.5px 2.5px 0 #344d97;
 
     transition: 0.2s;
 }

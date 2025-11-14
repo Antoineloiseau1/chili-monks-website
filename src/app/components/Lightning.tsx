@@ -1,5 +1,5 @@
 export default function Lightning() {
   return (
-    <span className="font-squealer">*</span>
+    <span className="font-avant-garde-condensed">*</span>
   )
 }

@@ -70,7 +70,7 @@ export default function Medias() {
                       <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                       <span className="text-xs text-gray-400 font-body uppercase tracking-wide">Latest Release</span>
                     </div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl text-white font-stencil leading-tight mb-4">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl xl:text-4xl 2xl:text-5xl text-white font-avant-garde leading-tight mb-4">
                       {featuredVideo.title}
                     </h3>
                     <p className="text-gray-400 text-sm sm:text-base xl:text-lg 2xl:text-xl leading-relaxed font-body">
@@ -88,7 +88,7 @@ export default function Medias() {
             <div className="space-y-6 sm:space-y-8">
               {/* Section Header */}
               <div className="text-center">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-stencil text-yellow-500 mb-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-avant-garde text-yellow-500 mb-2">
                   MORE VIDEOS
                 </h2>
                 <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-red-500 mx-auto rounded-full"></div>
@@ -110,7 +110,7 @@ export default function Medias() {
 
                       {/* Video Title */}
                       <div className="p-4">
-                        <h3 className="text-white font-stencil text-sm sm:text-base leading-tight group-hover:text-yellow-400 transition-colors duration-300">
+                        <h3 className="text-white font-avant-garde text-sm sm:text-base leading-tight group-hover:text-yellow-400 transition-colors duration-300">
                           {video.title}
                         </h3>
                       </div>
@@ -134,7 +134,7 @@ export default function Medias() {
 
                         {/* Video Title */}
                         <div className="p-4">
-                          <h3 className="text-white font-stencil text-sm sm:text-base leading-tight group-hover:text-yellow-400 transition-colors duration-300">
+                          <h3 className="text-white font-avant-garde text-sm sm:text-base leading-tight group-hover:text-yellow-400 transition-colors duration-300">
                             {video.title}
                           </h3>
                         </div>
@@ -157,7 +157,7 @@ export default function Medias() {
 
                           {/* Video Title */}
                           <div className="p-4">
-                            <h3 className="text-white font-stencil text-sm sm:text-base leading-tight group-hover:text-yellow-400 transition-colors duration-300">
+                            <h3 className="text-white font-avant-garde text-sm sm:text-base leading-tight group-hover:text-yellow-400 transition-colors duration-300">
                               {video.title}
                             </h3>
                           </div>
@@ -195,7 +195,7 @@ export default function Medias() {
           <div className="space-y-6 sm:space-y-8">
             {/* Section Header */}
             <div className="text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-stencil text-yellow-500 mb-2">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-avant-garde text-yellow-500 mb-2">
                 PHOTO GALLERY
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-yellow-500 to-red-500 mx-auto rounded-full"></div>

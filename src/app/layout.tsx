@@ -34,11 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className="scroll-smooth">
-      <body className={`${roboto.variable} ${avantGarde.variable} ${avantGardeCondensed.variable} font-stencil min-h-screen flex flex-col`}>
+      <body className={`${roboto.variable} ${avantGarde.variable} ${avantGardeCondensed.variable} font-avant-garde min-h-screen flex flex-col`}>
         <Header />
         <main className="pt-50 flex-1">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
