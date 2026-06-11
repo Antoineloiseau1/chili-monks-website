@@ -42,7 +42,7 @@ export const ImageModal = ({ imageSrc, alt, onClose }: ImageModalProps) => {
             maxWidth: '100%',
             maxHeight: '100%'
           }}
-          unoptimized
+
         />
       </div>
     </div>

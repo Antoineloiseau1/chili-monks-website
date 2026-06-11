@@ -26,7 +26,7 @@ export default function NavBar() {
            height={157}
            alt="chili-monks-logo"
            className="logo-anime w-auto h-auto max-w-[125px] lg:max-w-[140px] xl:max-w-[160px] 2xl:max-w-[200px] mobile-landscape-logo"
-           unoptimized
+
            />
         </Link>
        </div>

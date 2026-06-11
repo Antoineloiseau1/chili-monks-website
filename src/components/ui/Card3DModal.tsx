@@ -262,7 +262,7 @@ export const Card3DModal = ({ imageSrc, alt, onClose, images = [], currentIndex 
               width={28}
               height={14}
               className="object-contain"
-              unoptimized
+
             />
           </div>
           
@@ -279,7 +279,7 @@ export const Card3DModal = ({ imageSrc, alt, onClose, images = [], currentIndex 
                 contrast(${1 + Math.abs(transform.rotateX) * 0.005})
               `,
             }}
-            unoptimized
+
             draggable={false}
           />
           

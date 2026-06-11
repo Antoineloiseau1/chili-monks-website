@@ -25,7 +25,7 @@ export const EventCard = ({ event }: EventCardProps) => {
   return (
     <Link 
       href={`/events/${event.id}`} 
-      className={`${skew} hover:cursor-pointer rounded-md mb-4 hover:scale-100 hover:bg-[#e8e9e5]/10 bg-[#e8e9e5]/60 shadow-xs inset-shadow-sm/0 hover:inset-shadow-sm/40 transition-all duration-500 ease-in-out flex flex-row items-center justify-center text-white `}
+      className={`${skew} hover:cursor-pointer rounded-md mb-4 hover:scale-99 hover:bg-[#e8e9e5]/10 bg-[#e8e9e5]/60 shadow-xs inset-shadow-sm/0 hover:inset-shadow-sm/40 transition-all duration-300 ease-in-out flex flex-row items-center justify-center text-white `}
       style={{width: UI_CONSTANTS.LAYOUT.CONTAINER_WIDTH}}
     >
       <div className={`${unskew} hidden sm:block`}>

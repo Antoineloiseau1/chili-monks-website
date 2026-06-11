@@ -257,7 +257,7 @@ export const EnhancedCard3DModal = ({ imageSrc, alt, onClose }: EnhancedCard3DMo
                   saturate(${1 + lightingIntensity * 0.1})
                 `,
               }}
-              unoptimized
+
               draggable={false}
             />
             

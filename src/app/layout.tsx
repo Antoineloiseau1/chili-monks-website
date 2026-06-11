@@ -5,6 +5,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/Footer";
 import ClientProviders from "./components/ClientProviders";
 import { avantGarde, avantGardeCondensed } from "./fonts/avantGarde";
+import { withBasePath } from "@/lib/basePath";
 
 
 const roboto = Roboto({
@@ -33,12 +34,12 @@ export const metadata: Metadata = {
   publisher: "Chili Monks",
   icons: {
     icon: [
-      { url: "/images/favicon.ico", sizes: "any" },
-      { url: "/images/favicon.ico", sizes: "16x16", type: "image/ico" },
-      { url: "/images/favicon.ico", sizes: "32x32", type: "image/ico" },
+      { url: withBasePath("/images/favicon.ico"), sizes: "any" },
+      { url: withBasePath("/images/favicon.ico"), sizes: "16x16", type: "image/ico" },
+      { url: withBasePath("/images/favicon.ico"), sizes: "32x32", type: "image/ico" },
     ],
-    shortcut: "/images/favicon.ico",
-    apple: "/images/favicon.ico",
+    shortcut: withBasePath("/images/favicon.ico"),
+    apple: withBasePath("/images/favicon.ico"),
   },
   openGraph: {
     title: "Chili Monks",

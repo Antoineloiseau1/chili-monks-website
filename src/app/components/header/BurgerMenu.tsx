@@ -57,7 +57,7 @@ export default function BurgerMenu() {
               width="220"
               height="75"
               alt="chili-monks-logo"
-              unoptimized
+
               className="h-auto w-auto max-w-[220px]"
             />
           </Link>
