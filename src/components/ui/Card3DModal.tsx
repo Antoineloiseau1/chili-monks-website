@@ -258,7 +258,7 @@ export const Card3DModal = ({ imageSrc, alt, onClose, images = [], currentIndex 
           <div className="absolute top-2 left-2 z-30 w-10 h-10 bg-black rounded-full flex items-center justify-center opacity-100 shadow-lg">
             <Image
               src="/images/icon.png"
-              alt="PWR⚡EDGE"
+              alt="Chili Monks"
               width={28}
               height={14}
               className="object-contain"

@@ -40,18 +40,18 @@ export default function BurgerMenu() {
     <div className="flex flex-col text-center text-2xl w-full h-full relative">
       {/* Top menu items - spaced between themselves */}
       <div className="flex flex-col justify-evenly items-center h-2/5 pt-8">
-        <Link href="#" onClick={handleLinkClick}>
-          <div className='navbar-item extrude-right-text sm:text-4xl'>SHOWS</div>
+        <Link href="/news" onClick={handleLinkClick}>
+          <div className='navbar-item extrude-right-text sm:text-4xl'>NEWS</div>
         </Link>
-        <Link href="#" onClick={handleLinkClick}>
-          <div className='navbar-item  extrude-right-text sm:text-4xl'>MEDIAS</div>
+        <Link href="/events" onClick={handleLinkClick}>
+          <div className='navbar-item extrude-right-text sm:text-4xl'>SHOWS</div>
         </Link>
       </div>
 
       {/* Center logo - absolutely positioned in the middle */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -mt-6">
         <div className="navbar-logo">
-          <Link href="#" onClick={handleLinkClick}>
+          <Link href="/" onClick={handleLinkClick}>
             <Image
               src="/images/chili-monks-logo.png"
               width="220"
@@ -66,10 +66,10 @@ export default function BurgerMenu() {
 
       {/* Bottom menu items - spaced between themselves */}
       <div className="flex flex-col justify-evenly items-center h-3/6 pb-8 absolute bottom-0 w-full">
-        <Link href="#" onClick={handleLinkClick}>
+        <Link href="/about" onClick={handleLinkClick}>
           <div className='navbar-item extrude-right-text sm:text-4xl'>ABOUT</div>
         </Link>
-        <Link href="#" onClick={handleLinkClick}>
+        <Link href="/contact" onClick={handleLinkClick}>
           <div className='navbar-item  extrude-right-text sm:text-4xl'>CONTACT</div>
         </Link>
       </div>

@@ -4,12 +4,14 @@ import PageTitle from "../components/PageTitle"
 import PageContent from "../components/PageContent"
 import Link from "next/link"
 import Image from "next/image"
-import LanguageToggle from "../components/LanguageToggle"
 import { useState } from "react"
 import { getSortedNews, RichContentItem } from "../data/newsData"
+import { useLanguage } from "@/context"
+import { t } from "../data/translations"
 
 export default function BlogPage() {
-  const [isEnglish, setIsEnglish] = useState(false)
+  const { isEnglish, language } = useLanguage()
+  const tr = t.news[language]
   const [expandedPosts, setExpandedPosts] = useState<Set<string>>(new Set())
   const sortedNews = getSortedNews()
 
@@ -73,7 +75,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <PageTitle>News</PageTitle>
+      <PageTitle>{tr.pageTitle}</PageTitle>
       
       <PageContent className="text-white">
 
@@ -84,15 +86,17 @@ export default function BlogPage() {
             {sortedNews.map((newsItem, index) => {
               const isExpanded = expandedPosts.has(newsItem.id)
               const content = isEnglish ? newsItem.en.content : newsItem.fr.content
-              
+              const skew = index % 2 === 0 ? '-skew-x-12' : 'skew-x-12'
+              const unskew = index % 2 === 0 ? 'skew-x-12' : '-skew-x-12'
+
               return (
-                <article 
-                  key={newsItem.id} 
-                  className="group bg-gradient-to-br from-black/90 to-gray-900/90 backdrop-blur-lg border border-gray-600/30 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-50 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10 hover:scale-101"
+                <article
+                  key={newsItem.id}
+                  className={`${skew} group rounded-md hover:scale-99 hover:bg-[#e8e9e5]/10 bg-[#e8e9e5]/60 shadow-xs inset-shadow-sm/0 hover:inset-shadow-sm/40 overflow-hidden transition-all duration-500 ease-in-out`}
                 >
                   {/* Featured Image */}
                   {newsItem.image && (
-                    <div className="relative h-35 sm:h-50 md:h-56 xl:h-65 2xl:h-70 overflow-hidden">
+                    <div className={`${unskew} relative h-35 sm:h-50 md:h-56 xl:h-65 2xl:h-70 overflow-hidden`}>
                       <Image
                         src={newsItem.image.url}
                         alt={isEnglish ? newsItem.en.title : newsItem.fr.title}
@@ -110,7 +114,7 @@ export default function BlogPage() {
                         <div className="absolute top-4  right-4 ">
                           <div className="flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full">
                             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                            <span className="text-xs text-gray-200 font-body">Latest</span>
+                            <span className="text-xs text-gray-200 font-body">{tr.latest}</span>
                           </div>
                         </div>
                       )}
@@ -124,24 +128,14 @@ export default function BlogPage() {
                   )}
 
                   {/* Post Header */}
-                  <div className="p-8  md:p-10 pb-6 relative">
-                  
-                    {/* Language Toggle - Aligned with Title */}
-                    <div className="absolute right-1 -top-0 mt-2 z-10">
-                      <LanguageToggle 
-                        isEnglish={isEnglish}
-                        onToggle={() => setIsEnglish(!isEnglish)}
-                        className="shadow-lg"
-                      />
-                    </div>
-                    
+                  <div className={`${unskew} p-8  md:p-10 pb-6 relative`}>
                     <h2 className="text-xl sm:text-2xl  font-avant-garde text-white leading-tight group-hover:text-red-400 transition-colors duration-300">
                       {isEnglish ? newsItem.en.title : newsItem.fr.title}
                     </h2>
                   </div>
 
                   {/* Post Content */}
-                  <div className="px-8 pb-4">
+                  <div className={`${unskew} px-8 pb-4`}>
                     
                     <div className="text-gray-200 text-sm md:text-base leading-relaxed font-body -mt-3">
                       {isExpanded ? (
@@ -174,14 +168,14 @@ export default function BlogPage() {
                       >
                         {isExpanded ? (
                           <>
-                            {isEnglish ? 'Read Less' : 'Lire Moins'}
+                            {tr.readLess}
                             <svg className="w-4 h-4 transform rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                             </svg>
                           </>
                         ) : (
                           <>
-                            {isEnglish ? 'Read More' : 'Lire Plus'}
+                            {tr.readMore}
                             <svg className="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                             </svg>
@@ -205,7 +199,7 @@ export default function BlogPage() {
                           />
                         </div>
                         <span className="text-gray-300 font-body text-xs">
-                          {newsItem.author || "The PowerEdge Team"}
+                          {newsItem.author || "The Chili Monks Team"}
                         </span>
                       </div>
                     </div>
@@ -216,32 +210,32 @@ export default function BlogPage() {
           </div>
 
           {/* Call to Action Section */}
-          <div className="bg-black/70 backdrop-blur-lg border border-red-500/30 rounded-2xl sm:rounded-3xl p-4 text-center mb-8">
+          <div className="bg-white/30 backdrop-blur-lg border border-red-500/30 rounded-2xl sm:rounded-3xl p-4 text-center mb-8">
             <h3 className="text-2xl font-avant-garde text-whitemb-2  ">
-              Stay in the Loop
+              {tr.stayInTheLoop}
             </h3>
             <p className="text-gray-200 font-body text-md mx-auto1 sm:mb-2 md:mb-4">
-              Don&apos;t miss out on the latest POWER/EDGE news, show announcements, and exclusive behind-the-scenes content.
+              {tr.dontMissOut}
             </p>
             
             <div className="flex flex-col md:flex-row  gap-4 items-center justify-center">
-              <Link 
-                href="/events" 
+              <Link
+                href="/events"
                 className="p-2  w-40  border border-gray-600 rounded-full hover:border-red-500 hover:bg-red-500 text-sm"
               >
-                Upcoming Shows
+                {tr.upcomingShows}
               </Link>
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="p-2  w-40  border border-gray-600 rounded-full hover:border-red-500 hover:bg-red-500 text-sm"
               >
-                Get In Touch
+                {tr.getInTouch}
               </Link>
-              <Link 
-                href="/videos" 
+              <Link
+                href="/medias"
                 className="p-2  w-40  border border-gray-600 rounded-full hover:border-red-500 hover:bg-red-500 text-sm"
               >
-                Watch Videos
+                {tr.watchVideos}
               </Link>
             </div>
           </div>

@@ -16,7 +16,7 @@ export default function ShareButton({ eventName, eventDate }: ShareButtonProps) 
   const buttonRef = useRef<HTMLButtonElement>(null)
   
   const shareUrl = typeof window !== 'undefined' ? window.location.href : ''
-  const shareText = `Check out ${eventName} with PWR⚡EDGE - ${eventDate}`
+  const shareText = `Check out ${eventName} with Chili Monks - ${eventDate}`
 
   const handleShare = (platform: string) => {
     const encodedUrl = encodeURIComponent(shareUrl)

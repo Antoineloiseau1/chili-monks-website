@@ -17,6 +17,7 @@ export interface Event {
   capacity?: string
   isFood?: boolean
   isDrinks?: boolean
+  isParking?: boolean
 }
 
 export interface PastEvent {

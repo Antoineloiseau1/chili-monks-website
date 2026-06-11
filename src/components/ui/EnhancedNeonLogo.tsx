@@ -87,10 +87,10 @@ export const EnhancedNeonLogo = ({ className = '' }: EnhancedNeonLogoProps) => {
         }
       `}</style>
       
-      {/* PWR text - stable neon */}
+      {/* CHILI text - stable neon */}
       <div className="text-center mb-2">
         <span className="text-yellow-400 text-3xl font-bold tracking-wider neon-glow bg-gradient-to-b from-yellow-300 to-orange-500 bg-clip-text text-transparent">
-          PWR
+          CHILI
         </span>
       </div>
       
@@ -99,7 +99,7 @@ export const EnhancedNeonLogo = ({ className = '' }: EnhancedNeonLogoProps) => {
         <span className="text-yellow-400 text-2xl neon-glow animate-pulse">⚡</span>
       </div>
       
-      {/* EDGE text - broken neon effect */}
+      {/* MONKS text - broken neon effect */}
       <div className="relative text-center">
         <div className="flex justify-center space-x-2 text-3xl font-bold tracking-wider">
           {/* E - first letter */}

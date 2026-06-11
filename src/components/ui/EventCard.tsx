@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { FiClock } from "react-icons/fi"
@@ -5,22 +7,28 @@ import { IoTicket } from "react-icons/io5"
 import { Event } from '@/types'
 import { calculateDaysToEvent, formatEventDate } from '@/utils'
 import { UI_CONSTANTS } from '@/config'
+import { useLanguage } from '@/context'
+import { t } from '@/app/data/translations'
 
 interface EventCardProps {
   event: Event
 }
 
 export const EventCard = ({ event }: EventCardProps) => {
+  const skew = '-skew-x-12'
+  const unskew = 'skew-x-12'
+  const { language } = useLanguage()
+  const tr = t.events[language]
   const daysToEvent = calculateDaysToEvent(event.date)
   const formattedDate = formatEventDate(event.date)
 
   return (
     <Link 
       href={`/events/${event.id}`} 
-      className=" hover:cursor-pointer hover:scale-105 hover:shadow-lg/50 hover:shadow-red-500 transition-all duration-300 ease-in-out flex flex-row items-center justify-center border border-gray-500 rounded-lg text-white mb-5 bg-gradient-to-br from-black/90 to-gray-900/90 backdrop-blur-lg" 
+      className={`${skew} hover:cursor-pointer rounded-md mb-4 hover:scale-100 hover:bg-[#e8e9e5]/10 bg-[#e8e9e5]/60 shadow-xs inset-shadow-sm/0 hover:inset-shadow-sm/40 transition-all duration-500 ease-in-out flex flex-row items-center justify-center text-white `}
       style={{width: UI_CONSTANTS.LAYOUT.CONTAINER_WIDTH}}
     >
-      <div className=" hidden sm:block">
+      <div className={`${unskew} hidden sm:block`}>
         {event.image && (
           <Image
             src={event.image}
@@ -31,10 +39,10 @@ export const EventCard = ({ event }: EventCardProps) => {
           />
         )}
       </div>
-      <div className="flex flex-col items-center w-7/8">
-        <div className="mt-1 text-[10px] md:text-[14px] 2xl:text-lg flex flex-row items-center border shadow-xs/30 shadow-teal-300 border-1 rounded-full pl-2 pr-2 text-sm text-yellow-300 text-shadow-teal-700 text-shadow-sm/30">
+      <div className={`${unskew} flex flex-col items-center w-7/8`}>
+        <div className="mt-1 text-[10px] md:text-[14px] 2xl:text-lg flex flex-row items-center border-2 shadow-xs/30 shadow-teal-300 border-1 rounded-full pl-2 pr-2 text-sm text-[#344d97] text-shadow-teal-700 text-shadow-sm/30">
           <FiClock className="mr-1 2xl:text-lg"/>
-          <p className="">{daysToEvent} DAYS TO EVENT</p>
+          <p className="">{daysToEvent} {tr.daysToEvent}</p>
         </div>
 
         <h2 className="text-lg lg:text-xl text-shadow-gray-500 md:text-2xl text-shadow-sm/30">{event.name}</h2>
@@ -58,7 +66,7 @@ export const EventCard = ({ event }: EventCardProps) => {
             className="text-[10px] md:text-[14px] 2xl:text-lg flex text-center items-center justify-center text-yellow-300 border hover:bg-yellow-300 hover:text-black hover:text-shadow-gray-800 hover:cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out rounded-full pl-6 pr-6 mt-1 text-yellow-300 text-shadow-teal-700 text-shadow-sm/30 shadow-xs/30 shadow-teal-300 border-1 rounded-full mb-2"
           >
             <IoTicket className="mr-1"/>
-            <span className="">tickets</span>
+            <span className="">{tr.tickets}</span>
           </button>
         )}
       </div>

@@ -30,10 +30,10 @@ export const BrokenNeonLogo = ({ className = '' }: BrokenNeonLogoProps) => {
 
   return (
     <div className={`relative inline-block ${className}`}>
-      {/* PWR text - stable */}
+      {/* CHILI text - stable */}
       <div className="text-center mb-1">
         <span className="text-yellow-400 text-2xl font-bold tracking-wider bg-gradient-to-b from-yellow-300 to-orange-500 bg-clip-text text-transparent">
-          PWR
+          CHILI
         </span>
       </div>
       
@@ -42,7 +42,7 @@ export const BrokenNeonLogo = ({ className = '' }: BrokenNeonLogoProps) => {
         <span className="text-yellow-400 text-xl">⚡</span>
       </div>
       
-      {/* EDGE text - broken neon effect */}
+      {/* MONKS text - broken neon effect */}
       <div className="relative text-center">
         <div className="flex justify-center space-x-1 text-2xl font-bold tracking-wider">
           {/* E - first letter */}

@@ -293,7 +293,7 @@ export const EnhancedCard3DModal = ({ imageSrc, alt, onClose }: EnhancedCard3DMo
           <div className="text-center text-white/80 p-8">
             <div className="text-8xl mb-6 filter drop-shadow-lg">🎴</div>
             <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-              PWR⚡EDGE
+              Chili Monks
             </h3>
             <p className="text-lg mb-1">Event Memory</p>
             <p className="text-sm opacity-70">Collectible Card</p>
