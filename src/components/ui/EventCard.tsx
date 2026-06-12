@@ -67,7 +67,7 @@ export const EventCard = ({ event }: EventCardProps) => {
                 window.open(event.ticketLink, '_blank')
               }
             }}
-            className="text-[10px] md:text-[14px] 2xl:text-lg flex text-center items-center justify-center text-yellow-300 border hover:bg-yellow-300 hover:text-black hover:text-shadow-gray-800 hover:cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out rounded-md -skew-x-12 pl-6 pr-6 mt-1 text-shadow-teal-700 text-shadow-sm/30 shadow-xs/30 shadow-teal-300 border-1 mb-1"
+            className="text-[10px] md:text-[14px] 2xl:text-lg flex text-center items-center justify-center text-[#faeb83] border border-[#faeb83] hover:bg-[#faeb83] hover:text-[#344d97] hover:cursor-pointer hover:shadow-lg transition-all duration-300 ease-in-out rounded-md -skew-x-12 pl-6 pr-6 mt-1 text-shadow-sm/30 shadow-xs/30 mb-1"
           >
             <span className="flex items-center skew-x-12">
               <IoTicket className="mr-1"/>
