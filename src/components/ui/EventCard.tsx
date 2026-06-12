@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { FiClock } from "react-icons/fi"
 import { IoTicket } from "react-icons/io5"
 import { Event } from '@/types'
@@ -21,36 +20,33 @@ export const EventCard = ({ event }: EventCardProps) => {
   const tr = t.events[language]
   const daysToEvent = calculateDaysToEvent(event.date)
   const formattedDate = formatEventDate(event.date)
+  // Image de l'event en fond de carte si elle existe, sinon couleur unie.
+  // Les données fournissent parfois un nom de fichier nu ("psych1.jpg") :
+  // on le résout dans /images/. La couche est consommée par background-image,
+  // d'où le dégradé à deux bouts identiques pour la couleur unie.
+  const cardBg = event.image
+    ? `url('${event.image.startsWith('/') ? event.image : `/images/${event.image}`}')`
+    : 'linear-gradient(#e8e9e5, #e8e9e5)'
 
   return (
     <Link 
       href={`/events/${event.id}`} 
-      className={`${skew} hover:cursor-pointer rounded-md mb-4 hover:scale-99 hover:bg-[#e8e9e5]/10 bg-[#e8e9e5]/60 shadow-xs inset-shadow-sm/0 hover:inset-shadow-sm/40 transition-all duration-300 ease-in-out flex flex-row items-center justify-center text-white `}
-      style={{width: UI_CONSTANTS.LAYOUT.CONTAINER_WIDTH}}
+      className={`${skew} group hover:cursor-pointer mb-4 hover:scale-99 bg-[linear-gradient(rgba(232,233,229,0.6),rgba(232,233,229,0.6)),var(--card-bg)] hover:bg-[linear-gradient(rgba(232,233,229,0.1),rgba(232,233,229,0.1)),var(--card-bg)] bg-cover bg-center shadow-sm/20 inset-shadow-sm/0 hover:inset-shadow-sm/40 transition-all duration-300 ease-in-out flex flex-row items-center justify-center text-white `}
+      style={{
+        width: UI_CONSTANTS.LAYOUT.CONTAINER_WIDTH,
+        '--card-bg': cardBg,
+      } as React.CSSProperties}
     >
-      <div className={`${unskew} hidden sm:block`}>
-        {event.image && (
-          <Image
-            src={event.image}
-            width={175}
-            height={117}
-            alt={event.name}
-            className="rounded w-auto h-auto  sm:max-w-[90px] md:max-w-[110px] md:max-h-[130px] xl:max-h-[170px] 2xl:max-w-[200px] 2xl:max-h-[200px]"
-          />
-        )}
-      </div>
       <div className={`${unskew} flex flex-col items-center w-7/8`}>
-        <div className="mt-1 text-[10px] md:text-[14px] 2xl:text-lg flex flex-row items-center border-2 shadow-xs/30 shadow-teal-300 border-1 rounded-full pl-2 pr-2 text-sm text-[#344d97] text-shadow-teal-700 text-shadow-sm/30">
-          <FiClock className="mr-1 2xl:text-lg"/>
-          <p className="">{daysToEvent} {tr.daysToEvent}</p>
-        </div>
 
-        <h2 className="text-lg lg:text-xl text-shadow-gray-500 md:text-2xl text-shadow-sm/30">{event.name}</h2>
+        <h2 className="text-lg lg:text-xl text-[#344d97] group-hover:text-white transition-colors duration-300 font-bold md:text-2xl text-shadow-sm/30 text-bold group-hover:text-stroke-1 text-shadow-lg/40 text-stroke-color-black"
+        style={{ fontFamily: 'var(--font-anybody)', fontStretch: '120%' }}>{event.name.toUpperCase()}</h2>
         <div className="flex flex-col items-center">
-          <p className="text-sm">{event.venue}</p>
+          <p className="text-sm text-bold text-stroke-1 text-shadow-lg/40 text-stroke-color-black">{event.venue?.toUpperCase()}</p>
           <div className="flex flex-row">
-            <p className="text-white">{formattedDate}</p>
-            <p className="ml-2 text-red-500 text-shadow-sm/30">{event.city}</p>
+            <p className="text-white text-bold text-stroke-1 text-shadow-lg/40 text-stroke-color-black">{formattedDate}</p>
+            <p className="ml-2 text-[#faeb83] text-shadow-sm/30 font-semibold text-bold text-stroke-1 text-shadow-lg/40 text-stroke-color-black"
+            style={{ fontFamily: 'var(--font-anybody)', fontStretch: '120%' }}>{event.city?.toUpperCase()}</p>
           </div>
         </div>
 

@@ -18,7 +18,7 @@ export default function Footer() {
 
           {/* Brand Section */}
           <div className="flex flex-col items-center lg:flex-1 mb-2">
-            <h3 className="text-xl font-medium" style={{ fontFamily: 'var(--font-anybody)', fontStretch: '110%' }}>{tr.followUs}</h3>
+            <h3 className="text-xl font-medium text-white text-stroke-1 text-stroke-color-[#344d97] text-shadow-lg font-bold" style={{ fontFamily: 'var(--font-anybody)', fontStretch: '110%' }}>{tr.followUs.toUpperCase()}</h3>
             <div className="flex justify-center gap-1">
               <Link href="https://www.instagram.com/acdcbypoweredge/" className="text-[#344d97] transition-transform duration-200 ease-out hover:scale-115">
                 <RiInstagramFill size={20} />

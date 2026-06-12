@@ -48,7 +48,7 @@ export default function FeaturedVideo({ title = 'Demo', showTitle = false, class
 
       {/* Card adapted to the vertical video size */}
       <div
-        className="relative -mt-15 md:mt-0 max-w-xl mx-auto shadow-xl/40 shadow-[#344d97] rounded-xl overflow-hidden cursor-pointer"
+        className="video-inset relative -mt-15 md:mt-0 max-w-xl mx-auto rounded-lg overflow-hidden cursor-pointer"
         onClick={toggleSound}
       >
         <video
@@ -61,6 +61,9 @@ export default function FeaturedVideo({ title = 'Demo', showTitle = false, class
           disablePictureInPicture
           className="block w-full h-auto pointer-events-none"
         />
+
+        {/* Ombres internes au-dessus de la vidéo pour l'effet "creusé" */}
+        <div className="video-inset-shadow absolute inset-0 rounded-lg pointer-events-none" aria-hidden="true" />
 
         {/* Volume feedback icon, top-right, fades out after a click */}
         <div

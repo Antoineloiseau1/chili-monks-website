@@ -86,11 +86,11 @@ export default function HomePage() {
           {upcomingEvents.length > 0 && (
             <div className="">
               <div className="flex items-center justify-center mb-6">
-                <div className="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent flex-1"></div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl text-red-500 mx-6 sm:mx-8 md:mx-10 font-avant-garde">
-                   {tr.upcomingShows}
+                <div className="h-px bg-gradient-to-r from-transparent via-[#344d97] to-transparent flex-1"></div>
+                <h2 className="text-title text-2xl sm:text-3xl md:text-4xl mx-6 sm:mx-8 md:mx-10 text-stroke-2">
+                   {tr.upcomingShows.toUpperCase()}
                 </h2>
-                <div className="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent flex-1"></div>
+                <div className="h-px bg-gradient-to-r from-transparent via-[#344d97] to-transparent flex-1"></div>
               </div>
 
               <div className="flex flex-col items-center mb-6">

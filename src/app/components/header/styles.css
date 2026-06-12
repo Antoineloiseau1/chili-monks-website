@@ -192,17 +192,3 @@
     padding-right: 1rem !important;
   }
 }
-
-
-/* Psychedelic hue rotation for the navbar logo */
-@keyframes teintes {
-  from { filter: hue-rotate(0deg); }
-  to   { filter: hue-rotate(120deg); }
-}
-
-.logo-anime {
-  animation: teintes 6s linear infinite alternate;
-  will-change: filter;
-}
-
-
