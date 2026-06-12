@@ -16,9 +16,9 @@ export const ImageModal = ({ imageSrc, alt, onClose }: ImageModalProps) => {
     >
       <button
         onClick={onClose}
-        className="absolute top-8 right-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 z-10"
+        className="absolute top-8 right-8 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-md -skew-x-12 transition-all duration-200 z-10"
       >
-        <FiX size={24} />
+        <FiX size={24} className="skew-x-12" />
       </button>
       
       <div 

@@ -1,3 +1,4 @@
+import { mediaUrl } from '@/lib/media'
 import { Event, PastEvent } from '@/types'
 
 export const upcomingEventsData: Event[] = [
@@ -9,7 +10,7 @@ export const upcomingEventsData: Event[] = [
     venue: 'Monster\'s Art',
     city: 'Frejus',
     address: '358 Rue Rudolf Diesel, 83600 Fréjus',
-    image: "psych1.jpg",
+    image: mediaUrl("/images/events/monster.jpg"),
     description: [],
     link: '/events/fete-musique-2026',
     ticketLink: null,
@@ -24,12 +25,12 @@ export const upcomingEventsData: Event[] = [
   {
     id: 'altherax',
     name: 'Altherax',
-    date: new Date('2026-10-28'),
+    date: new Date('2026-11-27'),
     eventName: 'Altherax',
     venue: 'Altherax',
     city: 'Nice',
     address: '105 Rte de Canta Galet route de 06200, 06200 Nice',
-    image: null,
+    image: mediaUrl("images/events/altherax.jpeg"),
     description: [],
     link: "",
     ticketLink: null,

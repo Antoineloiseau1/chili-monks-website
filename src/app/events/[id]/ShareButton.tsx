@@ -72,9 +72,9 @@ export default function ShareButton({ eventName, eventDate }: ShareButtonProps) 
       <button
         ref={buttonRef}
         onClick={toggleMenu}
-        className="p-2 rounded-full bg-gray-700/50 hover:bg-gray-600/50 transition-colors"
+        className="p-2 rounded-md -skew-x-12 bg-gray-700/50 hover:bg-gray-600/50 transition-colors"
       >
-        <FiShare2 className="text-yellow-400" />
+        <FiShare2 className="text-yellow-400 skew-x-12" />
       </button>
       {showShareMenu && typeof window !== 'undefined' && createPortal(
         <div 

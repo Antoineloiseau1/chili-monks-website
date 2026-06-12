@@ -53,7 +53,7 @@ export default function EventsPage() {
               <div className="flex items-center justify-center ">
               </div>
               
-              <div className="flex flex-col items-center">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-[58rem] mx-auto">
                 {upcomingEvents.map(event => (
                   <EventCard key={event.id} event={event} />
                 ))}

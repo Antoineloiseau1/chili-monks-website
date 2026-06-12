@@ -77,7 +77,7 @@ export default function BlogPage() {
     <>
       <PageTitle>{tr.pageTitle}</PageTitle>
       
-      <PageContent className="text-white">
+      <PageContent>
 
         <div className="max-w-sm 2xl:max-w-5xl  sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl mx-auto px-4">
 
@@ -86,13 +86,15 @@ export default function BlogPage() {
             {sortedNews.map((newsItem, index) => {
               const isExpanded = expandedPosts.has(newsItem.id)
               const content = isEnglish ? newsItem.en.content : newsItem.fr.content
-              const skew = index % 2 === 0 ? '-skew-x-12' : 'skew-x-12'
-              const unskew = index % 2 === 0 ? 'skew-x-12' : '-skew-x-12'
+              // Skew réservé aux grands écrans : sur mobile/tablette il fait
+              // déborder la carte du viewport et rogne le contenu
+              const skew = index % 2 === 0 ? 'lg:-skew-x-12' : 'lg:skew-x-12'
+              const unskew = index % 2 === 0 ? 'lg:skew-x-12' : 'lg:-skew-x-12'
 
               return (
                 <article
                   key={newsItem.id}
-                  className={`${skew} group rounded-md hover:scale-99 hover:bg-[#e8e9e5]/10 bg-[#e8e9e5]/60 shadow-xs inset-shadow-sm/0 hover:inset-shadow-sm/40 overflow-hidden transition-all duration-500 ease-in-out`}
+                  className={`${skew} group rounded-md hover:scale-99 bg-[#e8e9e5]/60 hover:bg-[#e8e9e5]/80 shadow-xs inset-shadow-sm/0 hover:inset-shadow-sm/40 overflow-hidden transition-all duration-500 ease-in-out`}
                 >
                   {/* Featured Image */}
                   {newsItem.image && (
@@ -105,22 +107,29 @@ export default function BlogPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <div className="absolute top-4 left-4 ">
-                        <time className="text-yellow-400 text-sm font-body bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full border border-yellow-400/30">
-                          {formatDate(newsItem.date, isEnglish)}
+                      <div className="absolute top-4 left-4">
+                        <time className="inline-block text-white text-sm bg-[#344d97]/85 backdrop-blur-sm px-3 py-1 rounded-md -skew-x-12 shadow-xs">
+                          <span className="inline-block skew-x-12">{formatDate(newsItem.date, isEnglish)}</span>
                         </time>
                       </div>
                       {index === 0 && (
-                        <div className="absolute top-4  right-4 ">
-                          <div className="flex items-center gap-2 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full">
-                            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                            <span className="text-xs text-gray-200 font-body">{tr.latest}</span>
+                        <div className="absolute top-4 right-4">
+                          <div className="flex items-center gap-2 bg-[#faeb83]/90 backdrop-blur-sm px-3 py-1 rounded-md -skew-x-12 shadow-xs">
+                            <div className="flex items-center gap-2 skew-x-12">
+                              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                              <span
+                                className="text-xs text-[#344d97] font-semibold"
+                                style={{ fontFamily: 'var(--font-anybody)', fontStretch: '120%' }}
+                              >
+                                {tr.latest.toUpperCase()}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       )}
 
                       {newsItem.image.legend && (
-                        <div className="absolute bottom-1 right-2 text-[7px] sm:text-xs text-gray-200 font-body rounded bg-black/10 backdrop-blur-xs p-1">
+                        <div className="absolute bottom-1 right-2 text-[7px] sm:text-xs text-gray-200 rounded bg-black/10 backdrop-blur-xs p-1">
                           <span className="mr-1">&copy;</span>{newsItem.image.legend}
                         </div>
                       )}
@@ -128,16 +137,19 @@ export default function BlogPage() {
                   )}
 
                   {/* Post Header */}
-                  <div className={`${unskew} p-8  md:p-10 pb-6 relative`}>
-                    <h2 className="text-xl sm:text-2xl  font-avant-garde text-white leading-tight group-hover:text-red-400 transition-colors duration-300">
-                      {isEnglish ? newsItem.en.title : newsItem.fr.title}
+                  <div className={`${unskew} p-5 sm:p-8 md:p-10 pb-4 sm:pb-6 relative`}>
+                    <h2
+                      className="text-lg sm:text-xl font-bold text-[#344d97] leading-tight group-hover:text-[#283b75] transition-colors duration-300"
+                      style={{ fontFamily: 'var(--font-anybody)', fontStretch: '120%' }}
+                    >
+                      {(isEnglish ? newsItem.en.title : newsItem.fr.title).toUpperCase()}
                     </h2>
                   </div>
 
                   {/* Post Content */}
-                  <div className={`${unskew} px-8 pb-4`}>
+                  <div className={`${unskew} px-5 sm:px-8 pb-4`}>
                     
-                    <div className="text-gray-200 text-sm md:text-base leading-relaxed font-body -mt-3">
+                    <div className="text-gray-700 text-sm md:text-base leading-relaxed font-body -mt-3">
                       {isExpanded ? (
                         <div className="space-y-2">
                           {content.map((paragraph, paragraphIndex) => (
@@ -164,7 +176,7 @@ export default function BlogPage() {
                     content.join(' ').length > 200 && (
                       <button
                         onClick={() => togglePost(newsItem.id)}
-                        className="mt-6  inline-flex items-center gap-2 text-red-400 hover:text-red-300 transition-colors font-body text-sm font-medium group"
+                        className="mt-6 inline-flex items-center gap-2 text-[#344d97] hover:text-[#283b75] transition-colors text-sm font-medium group"
                       >
                         {isExpanded ? (
                           <>
@@ -210,33 +222,29 @@ export default function BlogPage() {
           </div>
 
           {/* Call to Action Section */}
-          <div className="bg-white/30 backdrop-blur-lg border border-red-500/30 rounded-2xl sm:rounded-3xl p-4 text-center mb-8">
-            <h3 className="text-2xl font-avant-garde text-whitemb-2  ">
-              {tr.stayInTheLoop}
-            </h3>
-            <p className="text-gray-200 font-body text-md mx-auto1 sm:mb-2 md:mb-4">
-              {tr.dontMissOut}
-            </p>
-            
-            <div className="flex flex-col md:flex-row  gap-4 items-center justify-center">
-              <Link
-                href="/events"
-                className="p-2  w-40  border border-gray-600 rounded-full hover:border-red-500 hover:bg-red-500 text-sm"
-              >
-                {tr.upcomingShows}
-              </Link>
-              <Link
-                href="/contact"
-                className="p-2  w-40  border border-gray-600 rounded-full hover:border-red-500 hover:bg-red-500 text-sm"
-              >
-                {tr.getInTouch}
-              </Link>
-              <Link
-                href="/medias"
-                className="p-2  w-40  border border-gray-600 rounded-full hover:border-red-500 hover:bg-red-500 text-sm"
-              >
-                {tr.watchVideos}
-              </Link>
+          <div className="lg:-skew-x-12 bg-[#e8e9e5]/60 shadow-xs rounded-md p-4 text-center mb-8">
+            <div className="lg:skew-x-12">
+              <h3 className="text-2xl font-avant-garde text-[#344d97] mb-2">
+                {tr.stayInTheLoop}
+              </h3>
+              <p className="text-gray-700 font-body text-md sm:mb-2 md:mb-4">
+                {tr.dontMissOut}
+              </p>
+
+              <div className="flex flex-col md:flex-row  gap-4 items-center justify-center">
+                <Link
+                  href="/events"
+                  className="inline-block p-2 w-40 border border-[#344d97] text-[#344d97] rounded-md -skew-x-12 hover:bg-[#344d97] hover:text-white text-sm font-medium transition-colors"
+                >
+                  <span className="inline-block skew-x-12">{tr.upcomingShows}</span>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-block p-2 w-40 border border-[#344d97] text-[#344d97] rounded-md -skew-x-12 hover:bg-[#344d97] hover:text-white text-sm font-medium transition-colors"
+                >
+                  <span className="inline-block skew-x-12">{tr.getInTouch}</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

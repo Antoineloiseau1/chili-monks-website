@@ -24,12 +24,12 @@ export default function NotFound() {
           </p>
 
           <div className="flex flex-col gap-3 w-50">
-            <Link href="/events" className="bg-red-600 hover:bg-red-700 text-white text-center py-3 px-6 rounded-full transition-colors">
-              {tr.viewEvents}
+            <Link href="/events" className="bg-[#344d97] hover:bg-[#283b75] text-white text-center py-3 px-6 rounded-md -skew-x-12 transition-colors">
+              <span className="inline-block skew-x-12">{tr.viewEvents}</span>
             </Link>
 
-            <Link href="/about" className="border border-white hover:bg-white hover:text-black text-white text-center py-3 px-6 rounded-full transition-colors">
-              {tr.aboutUs}
+            <Link href="/about" className="border border-white hover:bg-white hover:text-black text-white text-center py-3 px-6 rounded-md -skew-x-12 transition-colors">
+              <span className="inline-block skew-x-12">{tr.aboutUs}</span>
             </Link>
           </div>
         </div>

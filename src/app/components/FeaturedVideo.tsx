@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { HiVolumeUp, HiVolumeOff } from 'react-icons/hi'
+import { UI_CONSTANTS } from '@/config'
 
 import { mediaUrl } from '@/lib/media'
 
@@ -9,6 +10,8 @@ interface FeaturedVideoProps {
   title?: string
   showTitle?: boolean
   className?: string
+  src?: string
+  rounded?: string
 }
 
 /**
@@ -18,12 +21,13 @@ interface FeaturedVideoProps {
  * the sound, with a volume/mute icon flashing in the top-right corner before
  * fading out.
  */
-export default function FeaturedVideo({ title = 'Demo', showTitle = false, className = '' }: FeaturedVideoProps) {
+export default function FeaturedVideo({ title = 'Demo', showTitle = false, className = '', src = '/teaser.mov', rounded = 'rounded-[60px]' }: FeaturedVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
   const [muted, setMuted] = useState(true)
   const [showIcon, setShowIcon] = useState(false)
-
+  const skew = '-skew-x-12'
+  const unskew = 'skew-x-12'
   const toggleSound = () => {
     const video = videoRef.current
     if (!video) return
@@ -46,14 +50,16 @@ export default function FeaturedVideo({ title = 'Demo', showTitle = false, class
         </h2>
       )}
 
-      {/* Card adapted to the vertical video size */}
+      {/* Recessed "well" carved into the page background; the inner margin
+          keeps the carved edge visible even though the video itself is dark */}
+      <div className={`${rounded} inset-shadow-sm/100  -mt-15 md:mt-0 max-w-xl mx-auto`}>
       <div
-        className="video-inset relative -mt-15 md:mt-0 max-w-xl mx-auto rounded-lg overflow-hidden cursor-pointer"
+        className={`relative overflow-hidden cursor-pointer ${rounded}`}
         onClick={toggleSound}
       >
         <video
           ref={videoRef}
-          src={mediaUrl('/teaser.mov')}
+          src={mediaUrl(src)}
           autoPlay
           muted
           loop
@@ -62,18 +68,18 @@ export default function FeaturedVideo({ title = 'Demo', showTitle = false, class
           className="block w-full h-auto pointer-events-none"
         />
 
-        {/* Ombres internes au-dessus de la vidéo pour l'effet "creusé" */}
-        <div className="video-inset-shadow absolute inset-0 rounded-lg pointer-events-none" aria-hidden="true" />
-
         {/* Volume feedback icon, top-right, fades out after a click */}
         <div
-          className={`absolute top-3 right-3 p-2 rounded-full bg-black/60 text-white transition-opacity duration-500 ${
+          className={`absolute top-3 right-3 p-2 rounded-md -skew-x-12 bg-black/60 text-white transition-opacity duration-500 ${
             showIcon ? 'opacity-100' : 'opacity-0'
           }`}
           aria-hidden="true"
         >
-          {muted ? <HiVolumeOff size={24} /> : <HiVolumeUp size={24} />}
+          <span className="block skew-x-12">
+            {muted ? <HiVolumeOff size={24} /> : <HiVolumeUp size={24} />}
+          </span>
         </div>
+      </div>
       </div>
     </div>
   )

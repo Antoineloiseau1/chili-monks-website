@@ -142,21 +142,21 @@ export default function PhotoCarousel({
         <>
           <button
             onClick={prevPhoto}
-            className={`absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center z-10 cursor-pointer ${
+            className={`absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-md -skew-x-12 transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center z-10 cursor-pointer ${
               isTransitioning ? 'pointer-events-none opacity-50' : 'hover:scale-110'
             }`}
             aria-label="Previous photo"
           >
-            <FaChevronLeft className="text-lg" />
+            <FaChevronLeft className="text-lg skew-x-12" />
           </button>
           <button
             onClick={nextPhoto}
-            className={`absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center z-10 cursor-pointer ${
+            className={`absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-3 rounded-md -skew-x-12 transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:flex items-center justify-center z-10 cursor-pointer ${
               isTransitioning ? 'pointer-events-none opacity-50' : 'hover:scale-110'
             }`}
             aria-label="Next photo"
           >
-            <FaChevronRight className="text-lg" />
+            <FaChevronRight className="text-lg skew-x-12" />
           </button>
         </>
       )}

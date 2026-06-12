@@ -14,6 +14,9 @@ import { Event } from "@/types"
 import { useLanguage } from "@/context"
 import { t } from "@/app/data/translations"
 
+// Police de titre du site (cf. EventCard, news) : Anybody étirée
+const titleFont = { fontFamily: 'var(--font-anybody)', fontStretch: '120%' } as const
+
 export default function EventDetailClient({ event }: { event: Event }) {
   const { language } = useLanguage()
   const tr = t.events[language]
@@ -25,13 +28,13 @@ export default function EventDetailClient({ event }: { event: Event }) {
   return (
     <>
       <PageTitle>{event.name}</PageTitle>
-      <PageContent className="text-white">
-      <div className="max-w-md sm:max-w-lg lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto px-3">
+      <PageContent>
+      <div className="max-w-md sm:max-w-lg lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl mx-auto px-3 mt-6">
         {/* Back Button */}
         <div className="mb-6">
           <Link
             href="/events"
-            className="inline-flex items-center text-yellow-300 hover:text-white transition-colors group"
+            className="inline-flex items-center text-[#344d97] hover:text-[#283b75] font-medium transition-colors group"
           >
             <FiArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
             {tr.backToShows}
@@ -39,9 +42,9 @@ export default function EventDetailClient({ event }: { event: Event }) {
         </div>
 
         {/* Hero Section */}
-        <div className="relative mb-6 rounded-xl  overflow-hidden">
+        <div className="relative mb-6 rounded-md overflow-hidden shadow-xs bg-[#e8e9e5]/60">
           {event.image && (
-            <div className="absolute inset-0 border-red-500/30 border">
+            <div className="absolute inset-0">
               <Image
                 src={event.image}
                 fill
@@ -50,7 +53,7 @@ export default function EventDetailClient({ event }: { event: Event }) {
                 priority
               />
               {/* Gradient overlay */}
-              <div className="absolute inset-0  bg-gradient-to-r from-black/90 via-black/70 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
             </div>
           )}
 
@@ -58,10 +61,13 @@ export default function EventDetailClient({ event }: { event: Event }) {
             {/* Main content */}
             <div className="flex-1 flex items-start pt-6">
               <div className="p-8">
-                <h1 className="text-xl lg:text-2xl text-white mb-2 leading-tight">
-                  {event.eventName}
+                <h1
+                  className="text-xl lg:text-2xl text-white mb-2 leading-tight text-shadow-lg/40"
+                  style={titleFont}
+                >
+                  {event.eventName?.toUpperCase()}
                 </h1>
-                <div className="text-gray-200 text-sm lg:text-base leading-relaxed font-body">
+                <div className="text-gray-100 text-sm lg:text-base leading-relaxed font-body text-shadow-sm/40">
                   {Array.isArray(event.description) ? (
                     event.description.map((line, index) => (
                       <p key={index} className={index > 0 ? 'mt-2' : ''}>
@@ -77,41 +83,53 @@ export default function EventDetailClient({ event }: { event: Event }) {
 
             {/* Quick Info at bottom */}
             <div className="p-4">
-              <div className="grid grid-cols-2 gap-1 md:flex md:justify-center lg:justify-start text-xs">
+              <div className="grid grid-cols-2 gap-2 md:flex md:justify-center lg:justify-start text-xs">
                 {/* Date - always first (top-left) */}
-                <div className="flex items-center justify-center bg-red-600 space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-full border border-red-500/30 col-start-1">
-                  <FiCalendar className="text-red-400 text-xs sm:text-sm" />
-                  <span className="whitespace-nowrap">{event.date.toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                <div className="flex items-center justify-center bg-[#344d97]/85 backdrop-blur-sm text-white space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-md -skew-x-12 shadow-xs col-start-1">
+                  <span className="flex items-center gap-1 sm:gap-2 skew-x-12">
+                    <FiCalendar className="text-xs sm:text-sm" />
+                    <span className="whitespace-nowrap">{event.date.toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                  </span>
                 </div>
-                <div className="flex items-center justify-center bg-blue-600 space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-full border border-blue-500/30">
-                  <FiMapPin className="text-blue-400 text-xs sm:text-sm" />
-                  <span className="whitespace-nowrap">{event.city}</span>
+                <div className="flex items-center justify-center bg-[#faeb83]/90 backdrop-blur-sm text-[#344d97] font-semibold space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-md -skew-x-12 shadow-xs">
+                  <span className="flex items-center gap-1 sm:gap-2 skew-x-12">
+                    <FiMapPin className="text-xs sm:text-sm" />
+                    <span className="whitespace-nowrap">{event.city}</span>
+                  </span>
                 </div>
                 {/* Time info - second slot (top-right) */}
                 {event.doorsOpen && (
-                  <div className="flex items-center justify-center bg-green-600 space-x-1 sm:space-x-2 px-2 sm:px-3 py-1  rounded-full border border-green-500/30">
-                    <FiClock className="text-green-400 text-xs sm:text-sm" />
-                    <span className="whitespace-nowrap">{tr.doors} {event.doorsOpen}</span>
+                  <div className="flex items-center justify-center bg-[#344d97]/85 backdrop-blur-sm text-white space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-md -skew-x-12 shadow-xs">
+                    <span className="flex items-center gap-1 sm:gap-2 skew-x-12">
+                      <FiClock className="text-xs sm:text-sm" />
+                      <span className="whitespace-nowrap">{tr.doors} {event.doorsOpen}</span>
+                    </span>
                   </div>
                 )}
                 {event.showStarts && !event.doorsOpen && (
-                  <div className="flex items-center justify-center bg-yellow-600 space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-full border border-yellow-500/30">
-                    <FiClock className="text-yellow-400 text-xs sm:text-sm" />
-                    <span className="whitespace-nowrap">{tr.show} {event.showStarts}</span>
+                  <div className="flex items-center justify-center bg-[#344d97]/85 backdrop-blur-sm text-white space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-md -skew-x-12 shadow-xs">
+                    <span className="flex items-center gap-1 sm:gap-2 skew-x-12">
+                      <FiClock className="text-xs sm:text-sm" />
+                      <span className="whitespace-nowrap">{tr.show} {event.showStarts}</span>
+                    </span>
                   </div>
                 )}
                 {event.time && !event.doorsOpen && !event.showStarts && (
-                  <div className="flex items-center justify-center bg-yellow-600 space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-full border border-yellow-500/30">
-                    <FiClock className="text-yellow-400 text-xs sm:text-sm" />
-                    <span className="whitespace-nowrap">{event.time}</span>
+                  <div className="flex items-center justify-center bg-[#344d97]/85 backdrop-blur-sm text-white space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-md -skew-x-12 shadow-xs">
+                    <span className="flex items-center gap-1 sm:gap-2 skew-x-12">
+                      <FiClock className="text-xs sm:text-sm" />
+                      <span className="whitespace-nowrap">{event.time}</span>
+                    </span>
                   </div>
                 )}
 
                 {/* Show time - third slot (bottom-left) if doors open exists */}
                 {event.doorsOpen && event.showStarts && (
-                  <div className="flex items-center justify-center bg-yellow-600 space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-full border border-yellow-500/30">
-                    <FiClock className="text-yellow-400 text-xs sm:text-sm" />
-                    <span className="whitespace-nowrap">{tr.show} {event.showStarts}</span>
+                  <div className="flex items-center justify-center bg-[#344d97]/85 backdrop-blur-sm text-white space-x-1 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-2 rounded-md -skew-x-12 shadow-xs">
+                    <span className="flex items-center gap-1 sm:gap-2 skew-x-12">
+                      <FiClock className="text-xs sm:text-sm" />
+                      <span className="whitespace-nowrap">{tr.show} {event.showStarts}</span>
+                    </span>
                   </div>
                 )}
               </div>
@@ -126,21 +144,24 @@ export default function EventDetailClient({ event }: { event: Event }) {
           <div className="flex-1 lg:flex-[2] space-y-4 sm:space-y-6">
 
             {/* Event Information Card */}
-            <div className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-xl p-4 sm:p-6">
+            <div className="bg-[#e8e9e5]/60 shadow-xs rounded-md p-4 sm:p-6">
               <div className="mb-4 sm:mb-6">
-                <h2 className="text-xl sm:text-2xl text-red-500 flex items-center gap-2">
+                <h2
+                  className="text-lg sm:text-xl text-[#344d97] flex items-center gap-2"
+                  style={titleFont}
+                >
                   <FiCalendar className="text-lg sm:text-xl" />
-                  {tr.details}
+                  {tr.details.toUpperCase()}
                 </h2>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <div className="flex-1 space-y-3 sm:space-y-4">
                   <div className="flex items-start gap-2 sm:gap-3">
-                    <FiCalendar className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                    <FiCalendar className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                     <div>
-                      <p className="text-yellow-300 text-xs sm:text-sm">{tr.date}</p>
-                      <p className="text-white text-sm sm:text-base">
+                      <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.date}</p>
+                      <p className="text-gray-700 font-body text-sm sm:text-base">
                         {event.date.toLocaleDateString(language === 'fr' ? 'fr-FR' : 'en-US', {
                           weekday: 'long',
                           day: 'numeric',
@@ -153,30 +174,30 @@ export default function EventDetailClient({ event }: { event: Event }) {
 
                   {event.doorsOpen && (
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <FiClock className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                      <FiClock className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-yellow-300 text-xs sm:text-sm">{tr.doorsOpenAt}</p>
-                        <p className="text-white text-sm sm:text-base">{event.doorsOpen}</p>
+                        <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.doorsOpenAt}</p>
+                        <p className="text-gray-700 font-body text-sm sm:text-base">{event.doorsOpen}</p>
                       </div>
                     </div>
                   )}
 
                   {event.showStarts && (
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <FiClock className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                      <FiClock className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-yellow-300 text-xs sm:text-sm">{tr.showStartsAt}</p>
-                        <p className="text-white text-sm sm:text-base">{event.showStarts}</p>
+                        <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.showStartsAt}</p>
+                        <p className="text-gray-700 font-body text-sm sm:text-base">{event.showStarts}</p>
                       </div>
                     </div>
                   )}
 
                   {event.time && !event.doorsOpen && !event.showStarts && (
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <FiClock className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                      <FiClock className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-yellow-300 text-xs sm:text-sm">{tr.time}</p>
-                        <p className="text-white text-sm sm:text-base">{event.time}</p>
+                        <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.time}</p>
+                        <p className="text-gray-700 font-body text-sm sm:text-base">{event.time}</p>
                       </div>
                     </div>
                   )}
@@ -184,54 +205,53 @@ export default function EventDetailClient({ event }: { event: Event }) {
                 </div>
 
                 <div className="flex-1 space-y-3 sm:space-y-4">
-                {event.capacity && (
-                                        <div className="flex items-start gap-2 sm:gap-3">
-                      <MdOutlineReduceCapacity className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                  {event.capacity && (
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <MdOutlineReduceCapacity className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-yellow-300 text-xs sm:text-sm">{tr.capacity}</p>
-                        <p className="text-white text-sm sm:text-base">{event.capacity}</p>
+                        <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.capacity}</p>
+                        <p className="text-gray-700 font-body text-sm sm:text-base">{event.capacity}</p>
                       </div>
                     </div>
-                  )
-                }
+                  )}
 
                   {event.isFood && (
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <IoRestaurant className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                      <IoRestaurant className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-yellow-300 text-xs sm:text-sm">{tr.foodAvailable}</p>
+                        <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.foodAvailable}</p>
                       </div>
                     </div>
                   )}
 
                   {event.isDrinks && (
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <MdLocalBar className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                      <MdLocalBar className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-yellow-300 text-xs sm:text-sm">{tr.drinksAvailable}</p>
+                        <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.drinksAvailable}</p>
                       </div>
                     </div>
                   )}
 
                   {event.isParking && (
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <FaParking className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                      <FaParking className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-yellow-300 text-xs sm:text-sm">{tr.parkingAvailable}</p>
+                        <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.parkingAvailable}</p>
                       </div>
                     </div>
                   )}
 
                   {event.link && (
                     <div className="flex items-start gap-2 sm:gap-3">
-                      <FiExternalLink className="text-red-500 mt-1 flex-shrink-0 text-sm sm:text-base" />
+                      <FiExternalLink className="text-[#344d97] mt-1 flex-shrink-0 text-sm sm:text-base" />
                       <div>
-                        <p className="text-yellow-300 text-xs sm:text-sm font-semibold">{tr.site}</p>
+                        <p className="text-[#344d97] font-semibold text-xs sm:text-sm">{tr.site}</p>
                         <a
                           href={event.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-400 hover:text-blue-300 transition-colors text-xs sm:text-sm break-all"
+                          className="text-[#344d97] underline underline-offset-2 hover:text-[#283b75] transition-colors font-body text-xs sm:text-sm break-all"
                         >
                           {event.link.replace('https://www.', '')}
                         </a>
@@ -245,20 +265,23 @@ export default function EventDetailClient({ event }: { event: Event }) {
 
             {/* Location & Map Card */}
             {event.address && (
-              <div className="bg-black/30 backdrop-blur-sm border border-white/20 rounded-xl p-4 sm:p-6">
-                <h2 className="text-xl sm:text-2xl text-red-500 mb-4 sm:mb-6 flex items-center gap-2">
+              <div className="bg-[#e8e9e5]/60 shadow-xs rounded-md p-4 sm:p-6">
+                <h2
+                  className="text-lg sm:text-xl text-[#344d97] mb-4 sm:mb-6 flex items-center gap-2"
+                  style={titleFont}
+                >
                   <FiMapPin className="text-lg sm:text-xl" />
-                  {tr.location}
+                  {tr.location.toUpperCase()}
                 </h2>
 
                 <div className="mb-4">
-                  <p className="text-white mb-1 text-sm sm:text-base">{event.venue}</p>
-                  <p className="text-gray-300 text-sm sm:text-base">{event.address}</p>
+                  <p className="text-gray-800 font-body font-medium mb-1 text-sm sm:text-base">{event.venue}</p>
+                  <p className="text-gray-700 font-body text-sm sm:text-base">{event.address}</p>
                   <a
                     href={getGoogleMapsLink(event.address)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-xs sm:text-sm mt-2"
+                    className="inline-flex items-center gap-2 text-[#344d97] underline underline-offset-2 hover:text-[#283b75] transition-colors text-xs sm:text-sm mt-2"
                   >
                     <FiExternalLink className="text-xs sm:text-sm" />
                     {tr.seeOnMaps}
@@ -266,7 +289,7 @@ export default function EventDetailClient({ event }: { event: Event }) {
                 </div>
 
                 {/* Embedded Google Maps */}
-                <div className="rounded-lg overflow-hidden h-48 sm:h-64 border border-gray-600/30">
+                <div className="rounded-md overflow-hidden h-48 sm:h-64 shadow-xs">
                   <iframe
                     src={`https://www.google.com/maps?q=${encodeURIComponent(event.address)}&output=embed`}
                     width="100%"
@@ -287,12 +310,12 @@ export default function EventDetailClient({ event }: { event: Event }) {
           <div className="flex-1 lg:flex-[1]">
 
             {/* Ticket Purchase Card */}
-            <div className="bg-gradient-to-br from-red-600/20 to-yellow-600/20 backdrop-blur-sm border border-red-500/30 rounded-xl p-4 sm:p-6 sticky top-20">
+            <div className="bg-[#e8e9e5]/60 shadow-xs rounded-md p-4 sm:p-6 sticky top-20">
 
               {event.price && (
-                <div className="text-center mb-4 pb-4 border-b border-white/20">
-                  <p className="text-yellow-300 text-sm">{tr.priceStartsAt}</p>
-                  <p className="text-white text-xl">{event.price}</p>
+                <div className="text-center mb-4 pb-4 border-b border-[#344d97]/20">
+                  <p className="text-[#344d97] font-semibold text-sm">{tr.priceStartsAt}</p>
+                  <p className="text-gray-800 font-body text-xl">{event.price}</p>
                 </div>
               )}
 
@@ -302,11 +325,11 @@ export default function EventDetailClient({ event }: { event: Event }) {
                     href={event.ticketLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white text-center py-3 sm:py-4 px-4 sm:px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    className="block w-full bg-[#344d97] hover:bg-[#283b75] text-white text-center py-3 sm:py-4 px-4 sm:px-6 rounded-md -skew-x-12 transition-all duration-300 shadow-xs hover:shadow-md"
                   >
-                    <div className="flex items-center justify-center gap-2">
+                    <div className="flex items-center justify-center gap-2 skew-x-12">
                       <IoTicket className="text-lg sm:text-xl" />
-                      <span className="text-sm sm:text-base">{tr.buyTickets}</span>
+                      <span className="text-sm sm:text-base font-medium">{tr.buyTickets}</span>
                     </div>
                   </a>
                 )}
@@ -315,15 +338,15 @@ export default function EventDetailClient({ event }: { event: Event }) {
                   href={event.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-black/40 hover:bg-black/60 border border-white/20 text-white text-center py-2 sm:py-3 px-4 sm:px-6 rounded-xl transition-all duration-300"
+                  className="block w-full border border-[#344d97] text-[#344d97] hover:bg-[#344d97] hover:text-white text-center py-2 sm:py-3 px-4 sm:px-6 rounded-md -skew-x-12 transition-colors duration-300"
                 >
-                  <span className="text-sm sm:text-base">{tr.moreInfos}</span>
+                  <span className="inline-block skew-x-12 text-sm sm:text-base font-medium">{tr.moreInfos}</span>
                 </a>
               </div>
 
               {!event.ticketLink && (
-                <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-white/20">
-                  <p className="text-xs text-gray-400 text-center">
+                <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-[#344d97]/20">
+                  <p className="text-xs text-gray-600 font-body text-center">
                     {tr.ticketsAtVenue}
                   </p>
                 </div>
