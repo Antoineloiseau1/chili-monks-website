@@ -45,7 +45,7 @@ export const upcomingEventsData: Event[] = [
     {
     id: 'secret-place',
     name: 'The Secret Place',
-    date: new Date('2026-11-27'),
+    date: new Date('2026-08-20'),
     eventName: 'The Secret Place',
     venue: 'The Secret Place',
     city: 'Saint-Jean-de-Védas',
