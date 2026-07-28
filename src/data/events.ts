@@ -42,6 +42,29 @@ export const upcomingEventsData: Event[] = [
     isDrinks: true,
     isParking: true,
   },
+    {
+    id: 'secret-place',
+    name: 'The Secret Place',
+    date: new Date('2026-11-27'),
+    eventName: 'The Secret Place',
+    venue: 'The Secret Place',
+    city: 'Saint-Jean-de-Védas',
+    address: '25 rue St Exupery, 34430 Saint-Jean-de-Védas',
+    image: mediaUrl("images/events/secret-place.jpg"),
+    description: [
+      "Nous serons present en premiere partie de Boneshaker, tribute Airbourne",
+      "avec les grooves implacables  des Red Hot pour vous faire danser sur les plus grand tubes du groupe Californien"           
+                 ],
+    link: "https://www.toutafond.com/",
+    ticketLink: "",
+    time: '20:30',
+    doorsOpen: '19:00',
+    showStarts: '20:30',
+    price: null,
+    isFood: true,
+    isDrinks: true,
+    isParking: true,
+  },
 ]
 
 export const pastEventsData: PastEvent[] = []
