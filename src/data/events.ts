@@ -52,8 +52,8 @@ export const upcomingEventsData: Event[] = [
     address: '25 rue St Exupery, 34430 Saint-Jean-de-Védas',
     image: mediaUrl("images/events/secret-place.jpg"),
     description: [
-      "Nous serons present en premiere partie de Boneshaker, tribute Airbourne",
-      "avec les grooves implacables  des Red Hot pour vous faire danser sur les plus grand tubes du groupe Californien"           
+      "Nous serons en premiere partie de Boneshaker (tribute Airbourne) a la Secret Place !",
+      "Grooves implacables pour vous faire danser sur les plus grand hits du groupe Californien"           
                  ],
     link: "https://www.toutafond.com/",
     ticketLink: "",
